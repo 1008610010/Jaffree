@@ -31,6 +31,15 @@ jobs:
         with:
           java-version: ${{ matrix.java-version }}
 
+      # Setup Maven 3.6.1 for artifact download retries
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v3
+        with:
+          maven-version: 3.6.1
+
+      - name: Check Maven & Java versions
+        run: mvn -version
+
       - name: Install ffmpeg on Ubuntu
         run: sudo apt-get update && sudo apt-get install -y ffmpeg && ffmpeg -version
         if:  startsWith(matrix.os, 'ubuntu')
