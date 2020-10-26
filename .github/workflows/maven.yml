@@ -37,6 +37,9 @@ jobs:
         with:
           maven-version: 3.6.1
 
+      - name: Check Maven & Java versions
+        run: mvn -version
+
       - name: Install ffmpeg on Ubuntu
         run: sudo apt-get update && sudo apt-get install -y ffmpeg && ffmpeg -version
         if:  startsWith(matrix.os, 'ubuntu')
